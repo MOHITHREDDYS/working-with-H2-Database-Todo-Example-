@@ -5,8 +5,8 @@ package com.example.todo.model;
 public class Todo {
     private int id;
     private String todo;
-    private String status;
     private String priority;
+    private String status;
 
     public Todo(int id, String todo, String priority, String status) {
         this.id = id;
@@ -23,12 +23,12 @@ public class Todo {
         this.todo = todo;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {
@@ -39,11 +39,11 @@ public class Todo {
         return this.todo;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
-
     public String getPriority() {
         return this.priority;
+    }
+
+    public String getStatus() {
+        return this.status;
     }
 }
