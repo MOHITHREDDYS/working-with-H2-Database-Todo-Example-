@@ -40,9 +40,9 @@ public class TodoH2Service implements TodoRepository {
     public Todo addTodo(Todo todo) {
         db.update("insert into TODOLIST(todo, priority, status) values(?, ?, ?)", todo.getTodo(), todo.getPriority(), 
                   todo.getStatus());
-        Todo savedTodo = db.queryForObject("select * from TODOLIST where todo = ? and status = ? and priority = ?",
+        Todo savedTodo = db.queryForObject("select * from TODOLIST where todo = ? and priority = ? and status = ?",
                 new TodoRowMapper(),
-                todo.getTodo(), todo.getStatus(), todo.getPriority());
+                todo.getTodo(), todo.getPriority(), todo.getStatus());
         return savedTodo;
     }
 
@@ -60,10 +60,10 @@ public class TodoH2Service implements TodoRepository {
     public Todo updateTodo(int id, Todo todo) {
         if (todo.getTodo() != null)
             db.update("update TODOLIST set todo = ? where id = ?", todo.getTodo(), id);
-        if (todo.getStatus() != null)
-            db.update("update TODOLIST set status = ? where id = ?", todo.getStatus(), id);
         if (todo.getPriority() != null)
             db.update("update TODOLIST set priority = ? where id = ?", todo.getPriority(), id);
+        if (todo.getStatus() != null)
+            db.update("update TODOLIST set status = ? where id = ?", todo.getStatus(), id);
 
         return getTodo(id);
     }
